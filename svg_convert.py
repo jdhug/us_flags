@@ -23,8 +23,8 @@ def get_dimensions(source_dir, svg_file):
     doc.unlink()  
     
     width = 150
-    height = svg_height * (150/ svg_width) 
-    return (150, height, new_filename)
+    height = round(float(svg_height) * (150/ svg_width))
+    return (150, height)
     
 
 def convert_image(src_path, format, width=None, height=None):
@@ -63,7 +63,7 @@ def convert_image(src_path, format, width=None, height=None):
     
     return image_result
         
-def convert_directory(source_dir, target_dir, format='png', width=None, height=None, files=None):
+def _convert_directory(source_dir, target_dir, format='png', width=None, height=None, files=None):
     """ Convert directory of svg files to directory of png files"""
 
     if not os.path.exists(target_dir):
