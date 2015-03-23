@@ -5,6 +5,7 @@ from os import listdir
 from bottle import route, run, template, error, static_file, response
 from svg_convert import convert_image
 from io import BytesIO
+from sys import argv
 
 ALLOWED = {'png':'image/png', 'jpg':'image/jpg'}
 
