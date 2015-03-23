@@ -52,4 +52,4 @@ def index():
     flags.sort(key=lambda x: x.split("_", 3)[-1])   # format is flags_xx_xx_name_name_name.svg
     return template('flags', flags=flags)  
   
-run(host='0.0.0.0', port=argv[1], debug=True)
+run(host='0.0.0.0', port=argv[1], debug=False)
