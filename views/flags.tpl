@@ -4,7 +4,33 @@
         <title>US State and Territory Flags - Resize, reformat and download.</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="United States Flags"/>
-        <link rel="shortcut icon" type="image/x-icon"  href="/images/flag_us.png" />
+        
+        <!-- OG tags -->
+        <meta property="og:title" content="United States Flags"/>
+        <meta property="og:image" content="http://calm-plateau-1307.herokuapp.com/images/us/svg/flag_150_79_USA.svg"/>
+        <meta property="og:description" content="Convert US flags from svg to jpg or png."/>
+        
+        <!-- I miss favicon.ico -->
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/icons/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/icons/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/icons/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/icons/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/icons/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/icons/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/icons/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/icons/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/icons/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="/images/icons/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/images/icons/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/images/icons/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/images/icons/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/images/icons/manifest.json">
+        <link rel="shortcut icon" href="/images/icons/favicon.ico">
+        <meta name="msapplication-TileColor" content="#00aba9">
+        <meta name="msapplication-TileImage" content="/images/icons/mstile-144x144.png">
+        <meta name="msapplication-config" content="/images/icons/browserconfig.xml">
+        <meta name="theme-color" content="#ffffff">
+        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css"/>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
@@ -13,7 +39,7 @@
             body {overflow-y: scroll;}
             body.modal-open { overflow-y: scroll; margin: 0 auto;}
             .modal { overflow-y: auto; }
-            #container { background: #ccc; padding: 30px; border-width:5px; border-color:black; margin: 0; box-sizing: content-box;}
+            #containment { background: #ccc; padding: 30px; border-width:5px; border-color:black; margin: 0; box-sizing: content-box;}
             #resizable { background-position: top left;  padding: 10px; border-width:5px; margin: 0; box-sizing: content-box;}
             #resize_image { padding: 0px; border-width:0px; margin: 0; width: 100%, height: 100%} 
         </style>  
@@ -36,7 +62,7 @@
                 %for item in flags:
                     <div class="col-lg-2 col-md-4 col-xs-6">
                         <div class="thumbnail" >
-                            <img src="/images/us/svg/{{item}}" 
+                            <img src="/images/{{region}}/svg/{{item}}" 
                                  alt="{{item.split('.')[0].split('_', 3)[3].replace('_', ' ')}}"
                                  style="width:150px;height:100px;"/>
                             <div class="caption">
@@ -46,7 +72,7 @@
                                 <p style="line-height:1.0;margin-top: 0em; margin-bottom: 0em">
                                     <small>
                                         <em>
-                                            <a href="/images/us/svg/{{item}}" style="text-align: left;"  class="pull-left" download>SVG</a>
+                                            <a href="/images/{{region}}/svg/{{item}}" style="text-align: left;"  class="pull-left" download>SVG</a>
                                             <a href="#" data-toggle="modal" data-target="#flagModal" class="pull-right"
                                                 data-flag-name="{{item.split('.')[0].split('_', 3)[3].replace('_', ' ')}}" 
                                                 data-flag-image="{{item}}" data-flag-file="{{item}}">Download image
@@ -66,7 +92,7 @@
             <footer>
                 <div class="row">
                     <div class="col-lg-12">
-                        <p>Wigglyworld LLC, 2015 - An test app to evaluate cloud CI providers.</p>
+                        <p>Wigglyworld LLC, 2015 - An app to evaluate Codeship and Heroku CI and deployment.</p>
                     </div>
                 </div>
             </footer>
@@ -80,9 +106,9 @@
                         <h4 id="modal-title">TBD</h4>
                     </div>
                     <div class="modal-body" style="text-align: center;">
-                        <div id="container" class="ui-widget-content" style="margin:0 auto;">
+                        <div id="containment" class="ui-widget-content" style="margin:0 auto;">
                             <div id="resizable" class="ui-widget-content">
-                              <img id="resize_image" style="width:100%; height:100%;" src="None" alt="None"/>
+                              <img id="resize_image" style="width:100%; height:100%;" src="images/{{region}}/svg/flag_150_79_USA.svg" alt="USA"/>
                             </div>
                         </div>
                         <br/>
@@ -105,7 +131,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                        <a id="download_button" type="button" class="btn btn-primary">Download</a>
+                        <a id="download_button" type="button" data-region="{{region}}" class="btn btn-primary">Download</a>
                     </div>
                 </div>
             </div>
