@@ -2,9 +2,10 @@ $("#download_button").click( function()
     {
         var width = $( "#dim_w" ).val();
         var height = $( "#dim_h" ).val();
-        var flagName = $('#resize_image').attr("alt").replace(' ', '_') + "." + $('input[type="radio"][name="optradio"]:checked').val();
-        console.log('Download: ' + width + "," + height + "," + flagName);
-        $(this).attr("href","/generate/" + width + "/" + height + "/" + flagName);
+        var flagName = $('#resize_image').attr("alt").replace(/ /g, '_') + "." + $('input[type="radio"][name="optradio"]:checked').val();
+        var region = $( "#download_button" ).attr("data-region");
+        console.log('Download: ' + region + "," + width + "," + height + "," + flagName);
+        $(this).attr("href","/generate/" + region + "/" + width + "/" + height + "/" + flagName);
    }
 );
 
@@ -13,13 +14,13 @@ $(document).on('show.bs.modal', function(e) {
     var flagFile = $(e.relatedTarget).data('flag-file');
     var fsp = flagFile.split('_');
     fsp[1] = parseInt(fsp[1], 10);
-    fsp[2] = parseInt(fsp[2], 10)
+    fsp[2] = parseInt(fsp[2], 10);
     
     $(function() {
         $( "#resizable" ).resizable({
             aspectRatio: fsp[1]/fsp[2],
             minWidth: 16,
-            containment: "#container",
+            containment: "#containment",
             resize: function(e, ui) {
                 $( "#dim_w" ).val(Math.round(ui.size.width*2));
                 $( "#dim_h" ).val(Math.round(ui.size.height*2));
@@ -35,8 +36,8 @@ $(document).on('show.bs.modal', function(e) {
         });
     });
     
-    var container_borders = $( "#container" ).css([ "borderTopWidth", "borderRightWidth", "borderBottomWidth", "borderLeftWidth" ]);
-    var container_padding = $( "#container" ).css([ "paddingTop", "paddingRight", "paddingBottom", "paddingLeft" ]);
+    var container_borders = $( "#containment" ).css([ "borderTopWidth", "borderRightWidth", "borderBottomWidth", "borderLeftWidth" ]);
+    var container_padding = $( "#containment" ).css([ "paddingTop", "paddingRight", "paddingBottom", "paddingLeft" ]);
     var resizable_borders = $( "#resizable" ).css([ "borderTopWidth", "borderRightWidth", "borderBottomWidth", "borderLeftWidth" ]);
     var resizable_padding = $( "#resizable" ).css([ "paddingTop", "paddingRight", "paddingBottom", "paddingLeft" ]);
 
@@ -60,18 +61,19 @@ $(document).on('show.bs.modal', function(e) {
     var resizable_height = fsp[2] + parseInt(resizable_borders.borderTopWidth.replace('px', ''), 10) +
                                     parseInt(resizable_borders.borderBottomWidth.replace('px', ''), 10) ;                                       
     
-    console.log("Container Borders: " + JSON.stringify(container_borders));
-    console.log("Container Padding: " + JSON.stringify(container_padding));
+    console.log("containment Borders: " + JSON.stringify(container_borders));
+    console.log("containment Padding: " + JSON.stringify(container_padding));
     console.log("Resizable Borders: " + JSON.stringify(resizable_borders));
     console.log("Resizable Padding: " + JSON.stringify(resizable_padding));            
     console.log( "Page Ready: " + fsp[1] + "," + fsp[2] + ", " + 
                  container_width + "," + container_height + ", " + resizable_width + "," + resizable_height);
 
+    var region = $( "#download_button" ).attr("data-region");
     $('#modal-title').text(flagName +': Drag corner to resize flag.'); 
     $('#resize_image').attr("alt", flagName);
-    $('#resize_image').attr("src", 'images/us/svg/' + flagFile);
-    $('#container').width(container_width);
-    $('#container').height(container_height);
+    $('#resize_image').attr("src", 'images/' + region + '/svg/' + flagFile);
+    $('#containment').width(container_width);
+    $('#containment').height(container_height);
     $('#resizable').width(resizable_width);
     $('#resizable').height(resizable_height);
     
