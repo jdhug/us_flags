@@ -15,7 +15,7 @@ But really this a python app to evaluate hosted Continuous Integration:
 ---
 
 ###### Continuous Integration:
-|               | CircleCI       | Codeship       | TravicCI       |
+|               | CircleCI       | Codeship       | TravisCI       |
 | ------------  |:--------------:| :-------------:|:--------------:|
 | Master Badge  | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/master.svg) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=master) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=master) |
 | Develop Badge | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/develop.svg ) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=develop) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=develop) |
