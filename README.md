@@ -6,7 +6,7 @@
 But really this a python app to evaluate the following packages and services:
 
 * [Bottle](http://bottlepy.org/docs/dev/index.html).
-* [Codeship](https://codeship.com/) CI with some tests.
+* [Codeship](https://codeship.com/) and [Travis](https://travis-ci.com/) CI with some tests.
 * Automated [Heroku](https://www.heroku.com/) deployment.
 * [Bootstrap](http://getbootstrap.com/) and [modal dialog](http://getbootstrap.com/javascript/#modals).
 * [JQuery Resizable](https://jqueryui.com/resizable/).
