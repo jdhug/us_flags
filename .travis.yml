@@ -1,16 +1,16 @@
 language: python
-python:
-  # - "2.6"
-  - "3.4"
+    python:
+      # - "2.6"
+      - "3.4"
 services: #mysql
 env:
   # - DJANGO=1.2.7
   # - DJANGO=1.3.1
   # - DJANGO=1.4.3 DJANGO_SETTINGS_MODULE="mysite.travis_settings"
 install:
-  - pip install -r requirements.txt
+    - pip install -r requirements.txt
 before_script:
 #   - "pep8 --exclude=migrations --ignore=E501,E225 src"
 
 script:
-  - python ./test.py
+    - python -m unittest discover tests

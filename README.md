@@ -6,7 +6,7 @@
 But really this a python app to evaluate hosted Continuous Integration:
 
 * [Bottle](http://bottlepy.org/docs/dev/index.html).
-* [Codeship](https://codeship.com/), [TravisCI](https://travis-ci.com/) and  [CircleCI](https://circleci.com/) with some tests.
+* [CircleCI](https://circleci.com/), [Codeship](https://codeship.com/) and [TravisCI](https://travis-ci.com/) with some tests.
 * Automated [Heroku](https://www.heroku.com/) deployment.
 * [Bootstrap](http://getbootstrap.com/) and [modal dialog](http://getbootstrap.com/javascript/#modals).
 * [JQuery Resizable](https://jqueryui.com/resizable/).
@@ -15,12 +15,17 @@ But really this a python app to evaluate hosted Continuous Integration:
 ---
 
 ###### Continuous Integration:
-|               | CircleCI       | Codeship       | TravisCI       |
+|               | **[CircleCI](https://circleci.com/)**       | **[Codeship](https://codeship.com/)**       | **[TravisCI](https://travis-ci.com/)**       |
 | ------------  |:--------------:| :-------------:|:--------------:|
-| Master Badge  | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/master.svg) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=master) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=master) |
-| Develop Badge | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/develop.svg ) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=develop) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=develop) |
-| Config        | [circleci.yml](https://github.com/wigglyworld/us_flags/blob/master/circleci.yml) | [Procfile](https://github.com/wigglyworld/us_flags/blob/master/Procfile) | [.travis.yml](https://github.com/wigglyworld/us_flags/blob/master/.travis.yml) |
-| Delivery      | TBD | [Flags](http://calm-plateau-1307.herokuapp.com/) | TBD |
+| **Master**  | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/master.svg) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=master) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=master) |
+| **Develop** | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/develop.svg ) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=develop) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=develop) |
+| **Config**        | [circleci.yml](https://github.com/wigglyworld/us_flags/blob/master/circleci.yml) | [Procfile](https://github.com/wigglyworld/us_flags/blob/master/Procfile) | [.travis.yml](https://github.com/wigglyworld/us_flags/blob/master/.travis.yml) |
+| **Delivery**     | TBD | [Flags](http://calm-plateau-1307.herokuapp.com/) | TBD |
+| **Free Level<sup>*</sup>**    | Unlimited public repos | Unlimited public repos | Unlimited public repos |
+|                | 1 concurrent build     | 1 concurrent build     | 1 concurrent build     |
+| Private repos  | Unlimited              | 5 private repos | Unlimited but... |
+| Private builds | Unlimited             | 100 private builds/mo | First 100 private builds |
 
+<sup>*</sup> It may have changed...
 
 

@@ -9,7 +9,7 @@ from io import BytesIO
 from wand.image import Image
 from svg_convert import convert_image, get_dimensions
 
-DEBUG = False
+DEBUG = True
 
 SOURCE_DIR = 'images'
 REGION_DIRS = ['us']
