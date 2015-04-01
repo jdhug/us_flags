@@ -14,7 +14,7 @@ install:
     - pip install -r requirements.txt
 
 before_script:
-#   - "pep8 --exclude=migrations --ignore=E501,E225 src"
+    - nohup bash -c "python flags.py 8080 2>&1 &" && sleep 2; cat nohup.out
 
 script:
     - python -W ignore -m unittest discover tests
