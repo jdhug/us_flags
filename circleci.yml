@@ -9,4 +9,4 @@ machine:
 ## Customize test commands
 test:
   override:
-    - python -m unittest discover tests
+    - python -W ignore -m unittest discover tests
