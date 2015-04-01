@@ -8,5 +8,7 @@ machine:
 
 ## Customize test commands
 test:
-  override:
-    - python -W ignore -m unittest discover tests
+    pre:
+        nohup bash -c "python flags.py 8080 2>&1 &" && sleep 2; cat nohup.out
+    override:
+        python -W ignore -m unittest discover tests
