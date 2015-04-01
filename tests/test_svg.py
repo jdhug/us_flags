@@ -1,9 +1,7 @@
 #!/usr/bin/env python3
 """ Unit tests for flags """
 
-from __future__ import print_function
 import unittest
-
 import os
 from io import BytesIO
 from wand.image import Image

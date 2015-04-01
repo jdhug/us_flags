@@ -4,7 +4,7 @@ $("#download_button").click( function()
         var height = $( "#dim_h" ).val();
         var flagName = $('#resize_image').attr("alt").replace(/ /g, '_') + "." + $('input[type="radio"][name="optradio"]:checked').val();
         var region = $( "#download_button" ).attr("data-region");
-        console.log('Download: ' + region + "," + width + "," + height + "," + flagName);
+        //console.log('Download: ' + region + "," + width + "," + height + "," + flagName);
         $(this).attr("href","/generate/" + region + "/" + width + "/" + height + "/" + flagName);
    }
 );
@@ -61,12 +61,12 @@ $(document).on('show.bs.modal', function(e) {
     var resizable_height = fsp[2] + parseInt(resizable_borders.borderTopWidth.replace('px', ''), 10) +
                                     parseInt(resizable_borders.borderBottomWidth.replace('px', ''), 10) ;                                       
     
-    console.log("containment Borders: " + JSON.stringify(container_borders));
-    console.log("containment Padding: " + JSON.stringify(container_padding));
-    console.log("Resizable Borders: " + JSON.stringify(resizable_borders));
-    console.log("Resizable Padding: " + JSON.stringify(resizable_padding));            
-    console.log( "Page Ready: " + fsp[1] + "," + fsp[2] + ", " + 
-                 container_width + "," + container_height + ", " + resizable_width + "," + resizable_height);
+    //console.log("containment Borders: " + JSON.stringify(container_borders));
+    //console.log("containment Padding: " + JSON.stringify(container_padding));
+    //console.log("Resizable Borders: " + JSON.stringify(resizable_borders));
+    //console.log("Resizable Padding: " + JSON.stringify(resizable_padding));            
+    //console.log( "Page Ready: " + fsp[1] + "," + fsp[2] + ", " + 
+    //             container_width + "," + container_height + ", " + resizable_width + "," + resizable_height);
 
     var region = $( "#download_button" ).attr("data-region");
     $('#modal-title').text(flagName +': Drag corner to resize flag.'); 
