@@ -25,6 +25,8 @@ But really this a python app to evaluate hosted Continuous Integration:
 |                | 1 concurrent build     | 1 concurrent build     | 1 concurrent build     |
 | Private repos  | Unlimited              | 5 private repos | Unlimited but... |
 | Private builds | Unlimited             | 100 private builds/mo | First 100 private builds |
+| Artifacts      | [Yes](http://circleci.com/docs/build-artifacts) | [Upload to S3](https://codeship.com/documentation/continuous-integration/keep-build-artifacts/) | [Upload to S3](http://docs.travis-ci.com/user/uploading-artifacts/) |
+| Selenium Firefox | Yes | Yes | Working on it | 
 
 <sup>*</sup> It may have changed...
 
