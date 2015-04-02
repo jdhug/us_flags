@@ -7,7 +7,7 @@ from io import BytesIO
 from wand.image import Image
 from svg_convert import convert_image, get_dimensions
 
-DEBUG = True
+DEBUG = False
 
 SOURCE_DIR = 'images'
 REGION_DIRS = ['us']
@@ -23,16 +23,17 @@ class ConvertTests(unittest.TestCase):
 
     def test_svg_dimensions(self):
         """ Check file name for proper internal width, height ratio """
-        if DEBUG:
-            print('Run test_svg_dimensions')
+
+        print('\nTest SVG Dimensions', end='', flush=True)
         for region in REGION_DIRS:
             src_dir = os.path.join(SOURCE_DIR, region, SVG_DIR)
             for svg_file in os.listdir(src_dir):
                 (img_width, img_height) = get_dimensions(src_dir, svg_file)
                 file_dimensions = [int(i) for i in svg_file.split('_')[1:3]]
 
+                print('.', end="", flush=True)
                 if DEBUG:
-                    print('SvgDimensions: %s/%s (%d,%d)' %
+                    print('SvgDimensions: %s/%s (%d,%d): ' %
                           (region, svg_file, img_width, img_height))
 
                 self.assertEqual(img_width, file_dimensions[0],
@@ -49,9 +50,8 @@ class ConvertTests(unittest.TestCase):
             src_dir = os.path.join(SOURCE_DIR, region, SVG_DIR)
             for target_format in TEST_FORMATS:
                 for dims in TEST_DIMENSIONS:
-                    if DEBUG:
-                        print('***** Convert: %s (%s,%s)' %
-                              (target_format.upper(), str(dims[0]), str(dims[1])))
+                    print('\nTest Convert to %s (%s,%s): ' %
+                          (target_format.upper(), str(dims[0]), str(dims[1])), end="", flush=True)
                     for svg_file in os.listdir(src_dir):
                         contents = convert_image(src_dir, svg_file, target_format,
                                                  width=dims[0], height=dims[1])
@@ -59,6 +59,7 @@ class ConvertTests(unittest.TestCase):
                         output.write(contents)
                         output.seek(0)
                         with Image(blob=contents) as img:
+                            print('.', end="", flush=True)
                             if DEBUG:
                                 print('Convert: %s/%s to %s (%s,%s) -> (%d,%d)' %
                                       (region, svg_file, target_format, str(dims[0]), str(dims[1]),
@@ -77,9 +78,12 @@ class ConvertTests(unittest.TestCase):
     def test_conditions(self):
         """ Test error conditions in convert_image """
         src_dir = os.path.join(SOURCE_DIR, REGION_DIRS[0], SVG_DIR)
+        print('\nTest Error conditions: ', end='', flush=True)
+
 
         if DEBUG:
             print('Conditions: Bogus target image format')
+
         contents = convert_image(src_dir, 'flag_150_100_Arizona.svg',
                                  'bogus', width=256, height=256)
         self.assertIsNone(contents, 'Conditions: Bogus format, results should be None.')
