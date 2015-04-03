@@ -5,12 +5,13 @@ import unittest
 import os
 import requests
 from selenium import webdriver, selenium
-
+from git import Repo
 
 
 SOURCE_DIR = './images'
 REGION_DIRS = ['us']
 SVG_DIR = 'svg'
+MY_URL = "http://localhost:8080"
 
 DEBUG = False
 
@@ -26,7 +27,7 @@ class TestFlagPageAttributes(unittest.TestCase):
         if DEBUG:
             print('**** Checking modal attributes.')
         driver = self.driver
-        driver.get("http://localhost:8080")
+        driver.get(MY_URL)
 
         # This is an unfortunate hack so the modal does not fade and
         # we don't have to sleep when closing the dialog
@@ -52,33 +53,34 @@ class TestFlagPageAttributes(unittest.TestCase):
                 driver.find_element_by_id("cancel_button").click()
 
     def test_get_artifacts(self):
-        """ Get some screen shots (CircleCI only since I don't push yet) """
+        """ Get some screen shots (CircleCI only since I don't anywhere to push them) """
         if os.environ.get('CIRCLE_ARTIFACTS'):
-            print('\nGet some screen shots: ', end='', flush=True)
+            print('\nCreate test artifacts (screenshots): ', end='', flush=True)
             window_sizes = [[300, 600], [700, 600], [800, 600], [1000, 1000], [1300, 1300]]
             
-            artifacts_dir = os.environ.get('CIRCLE_ARTIFACTS')
-            if not os.path.exists(artifacts_dir):
-                os.makedirs(artifacts_dir)                
+            repo = Repo('.')
+            artifacts_path = os.environ.get('CIRCLE_ARTIFACTS') + '/' + str(repo.active_branch)
+            
+            if not os.path.exists(artifacts_path):
+                os.makedirs(artifacts_path)
             
             driver = self.driver
-            driver.get("http://localhost:8080")
+            driver.get(MY_URL)
             for w_size in window_sizes:
                 driver.set_window_size(w_size[0], w_size[1])
-                path = artifacts_dir + '/ff_shot_%d_%d.png' % (w_size[0], w_size[1])
-                driver.save_screenshot(path)
+                filepath = artifacts_path + '/ff_shot_%d_%d.png' % (w_size[0], w_size[1])
+                driver.save_screenshot(filepath)
                 print('.', end="", flush=True)
                 if DEBUG:
-                    print ('Captured %s' % path)
+                    print ('Captured %s' % filepath)
         else:
-            print('\nNo screen shots: ', end='', flush=True)
+            print('\nNo test artifacts generated. ', end='', flush=True)
             
-    def test_all_images(self):
+    def test_image_links(self):
         """ Make sure no images are 404 """
         print('\nTest image links: ', end='', flush=True)
         driver = self.driver
-        driver.get("http://localhost:8080")
-        driver.save_screenshot('flags.png')
+        driver.get(MY_URL)
         all_images  = driver.find_elements_by_tag_name('img')
         for image in all_images:
             src = image.get_attribute('src')
@@ -95,7 +97,7 @@ class TestFlagPageAttributes(unittest.TestCase):
         """ unit test of attributes in main page """
         print('Checking main page attributes.')
         driver = self.driver
-        driver.get("http://localhost:8080")
+        driver.get(MY_URL)
         # test implicitly confirms that they are sorted correctly
         for region in REGION_DIRS:
             flags = os.listdir(os.path.join(SOURCE_DIR, region, SVG_DIR))
