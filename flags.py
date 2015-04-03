@@ -9,6 +9,10 @@ from io import BytesIO
 from sys import argv
 
 # Mime types
+SOURCE_DIR = './images'
+REGION_DIRS = ['us']
+SVG_DIR = 'svg'
+
 ALLOWED = {'png':'image/png', 'jpg':'image/jpg'}
 REGIONS = ['us']
 DEBUG = False
@@ -75,7 +79,7 @@ def send_image(image_path, filename):
 def index():
     """ index view """
     region = 'us'
-    flags = os.listdir('./images/' + region + '/svg')
+    flags = os.listdir(os.path.join(SOURCE_DIR, region, SVG_DIR))
     flags.sort(key=lambda x: x.split("_", 3)[-1])   # format is flags_xx_xx_name_name_name.svg
     return template('flags', flags=flags, region=region)
 

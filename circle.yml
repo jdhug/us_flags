@@ -1,0 +1,18 @@
+## Custom test configuration for CircleCI
+machine:
+    timezone:
+        America/Los_Angeles # Set the timezone
+    python:
+        version: 3.4.1
+
+
+## Customize test commands
+test:
+    pre:
+        - nohup bash -c "python flags.py 8080 2>&1 &" && sleep 2; cat nohup.out
+    override:
+        - python -W ignore -m unittest discover tests
+        
+general:
+    artifacts:
+        - artifacts
