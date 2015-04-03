@@ -10,7 +10,9 @@ But really this a python app to evaluate hosted Continuous Integration:
 * Automated [Heroku](https://www.heroku.com/) deployment.
 * [Bootstrap](http://getbootstrap.com/) and [modal dialog](http://getbootstrap.com/javascript/#modals).
 * [JQuery Resizable](https://jqueryui.com/resizable/).
-* [Wand] (http://docs.wand-py.org/en/0.4.0/).
+* [Wand](http://docs.wand-py.org/en/0.4.0/).
+* [Requests](http://docs.python-requests.org/en/latest/)
+* [Selenium](http://www.seleniumhq.org/)
 
 ---
 
@@ -19,7 +21,7 @@ But really this a python app to evaluate hosted Continuous Integration:
 | ------------  |:--------------:| :-------------:|:--------------:|
 | **Master**  | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/master.svg) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=master) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=master) |
 | **Develop** | ![alt tag](https://circleci.com/gh/wigglyworld/us_flags/tree/develop.svg ) | ![alt tag](https://codeship.com/projects/126f5060-b176-0132-d033-3edef27c5b65/status?branch=develop) | ![alt tag](https://travis-ci.org/wigglyworld/us_flags.svg?branch=develop) |
-| **Config**        | [circleci.yml](https://github.com/wigglyworld/us_flags/blob/master/circleci.yml) | In codeship.com | [.travis.yml](https://github.com/wigglyworld/us_flags/blob/master/.travis.yml) |
+| **Config**        | [circle.yml](https://github.com/wigglyworld/us_flags/blob/master/circle.yml) | codeship.com | [.travis.yml](https://github.com/wigglyworld/us_flags/blob/master/.travis.yml) |
 | **Delivery**     | TBD | [Flags](http://calm-plateau-1307.herokuapp.com/) | TBD |
 | **Free Level<sup>*</sup>**    | Unlimited public repos | Unlimited public repos | Unlimited public repos |
 |                | 1 concurrent build     | 1 concurrent build     | 1 concurrent build     |
